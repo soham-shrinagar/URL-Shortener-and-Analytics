@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Analytics - Detailed Stats</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-with-back">
+        <a href="/" class="back-link">← Back to Home</a>
+        <h1>📊 URL Analytics</h1>
+      </div>
+    </header>
+
+    <main>
+      <!-- Search Section -->
+      <section class="card">
+        <h2>Enter Short Code</h2>
+        <form id="analyticsForm">
+          <div class="form-group inline-form">
+            <input 
+              type="text" 
+              id="shortCodeInput" 
+              placeholder="Enter short code (e.g., abc123)"
+              required
+            >
+            <button type="submit" class="btn btn-primary">Get Analytics</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Analytics Results -->
+      <div id="analyticsResults" class="hidden">
+        <!-- URL Info -->
+        <section class="card">
+          <h2>URL Information</h2>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="label">Short Code:</span>
+              <span id="infoShortCode" class="value"></span>
+            </div>
+            <div class="info-item">
+              <span class="label">Long URL:</span>
+              <a id="infoLongUrl" class="value link" target="_blank"></a>
+            </div>
+            <div class="info-item">
+              <span class="label">Created:</span>
+              <span id="infoCreated" class="value"></span>
+            </div>
+            <div class="info-item" id="infoExpiresContainer" class="hidden">
+              <span class="label">Expires:</span>
+              <span id="infoExpires" class="value"></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stats Overview -->
+        <section class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="totalClicks">0</div>
+            <div class="stat-label">Total Clicks</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="uniqueVisitors">0</div>
+            <div class="stat-label">Unique Visitors</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="clickRate">0%</div>
+            <div class="stat-label">Return Rate</div>
+          </div>
+        </section>
+
+        <!-- Charts -->
+        <div class="chart-grid">
+          <!-- Clicks by Day -->
+          <section class="card">
+            <h3>Clicks by Day (Last 7 Days)</h3>
+            <div id="clicksByDayChart" class="chart"></div>
+          </section>
+
+          <!-- Device Breakdown -->
+          <section class="card">
+            <h3>Device/Browser Breakdown</h3>
+            <div id="deviceChart" class="chart"></div>
+          </section>
+        </div>
+
+        <!-- Recent Clicks -->
+        <section class="card">
+          <h3>Recent Clicks</h3>
+          <div class="table-container">
+            <table id="recentClicksTable">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>IP Address</th>
+                  <th>User Agent</th>
+                </tr>
+              </thead>
+              <tbody id="recentClicksBody">
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- Error Message -->
+      <section id="errorSection" class="card error-card hidden">
+        <h2>❌ Error</h2>
+        <p id="errorMessage"></p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built with TypeScript, Express, Prisma & Redis</p>
+    </footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/js/analytics.js"></script>
+</body>
+</html>
